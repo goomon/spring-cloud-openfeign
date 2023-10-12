@@ -26,6 +26,7 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("io.kotest:kotest-runner-junit5:5.0.0")
 }
 
 dependencyManagement {
