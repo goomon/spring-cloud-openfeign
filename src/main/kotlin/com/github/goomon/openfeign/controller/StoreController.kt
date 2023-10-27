@@ -1,9 +1,9 @@
 package com.github.goomon.openfeign.controller
 
 import com.github.goomon.openfeign.domain.model.Store
+import com.github.goomon.openfeign.excpetion.StoreClientException
+import com.github.goomon.openfeign.excpetion.StoreServerException
 import java.lang.IllegalArgumentException
-import java.lang.NullPointerException
-import java.lang.RuntimeException
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -36,15 +36,26 @@ class StoreController {
         return sampleData
     }
 
+    @GetMapping("/stores/server-error")
+    fun throwServerError() {
+        throw StoreServerException()
+    }
+
+    @GetMapping("/stores/client-error")
+    fun throwClientError() {
+        throw StoreClientException()
+    }
+
+
     @PutMapping("/stores/{storeId}")
     fun update(
         @PathVariable storeId: Long,
         @RequestBody store: Store,
     ): Store {
         return sampleData.firstOrNull { it.id == storeId }?.copy(
-               name = store.name,
-                stock = store.stock,
-            ) ?: throw IllegalArgumentException("cannot find store matched with storeId")
+            name = store.name,
+            stock = store.stock,
+        ) ?: throw IllegalArgumentException("cannot find store matched with storeId")
     }
 
     @DeleteMapping("/stores/{storeId}")
