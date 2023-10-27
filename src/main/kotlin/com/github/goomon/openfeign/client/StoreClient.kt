@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PutMapping
 
 @FeignClient(
     name = "stores",
-    url = "http://localhost:8080",
+    url = "http://localhost:9090",
 )
 interface StoreClient {
     @GetMapping("/stores")
