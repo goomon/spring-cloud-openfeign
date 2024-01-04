@@ -4,6 +4,7 @@ import com.github.goomon.openfeign.domain.model.Store
 import com.github.goomon.openfeign.excpetion.StoreClientException
 import com.github.goomon.openfeign.excpetion.StoreServerException
 import java.lang.IllegalArgumentException
+import org.slf4j.LoggerFactory
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 class StoreController {
+    private val LOGGER = LoggerFactory.getLogger(javaClass)
     private val sampleData = listOf(
         Store(
             id = 1,
@@ -44,6 +46,12 @@ class StoreController {
     @GetMapping("/stores/client-error")
     fun throwClientError() {
         throw StoreClientException()
+    }
+
+    @GetMapping("/stores/read-timeout")
+    fun sleep() {
+        LOGGER.info("sleep()")
+        Thread.sleep(180_000)
     }
 
 

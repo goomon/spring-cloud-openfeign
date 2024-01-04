@@ -2,6 +2,7 @@ package com.github.goomon.openfeign.client
 
 import com.github.goomon.openfeign.domain.model.Store
 import feign.FeignException
+import feign.RetryableException
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
@@ -52,6 +53,16 @@ class StoreClientTest {
         // then
         shouldThrow<FeignException.InternalServerError> {
             storeClient.update(5, store)
+        }
+    }
+
+    @Test
+    fun readTimeout() {
+        // given
+        // when
+        // then
+        shouldThrow<RetryableException> {
+            storeClient.readTimeout()
         }
     }
 }
