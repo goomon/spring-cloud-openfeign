@@ -5,8 +5,6 @@ import com.github.goomon.openfeign.error.BadRequestErrorCode
 import com.github.goomon.openfeign.error.StoreServiceError
 import com.github.goomon.openfeign.excpetion.StoreClientException
 import com.github.goomon.openfeign.excpetion.StoreServerException
-import java.io.IOException
-import javax.servlet.http.HttpServletRequest
 import org.springframework.core.Ordered
 import org.springframework.core.annotation.Order
 import org.springframework.http.HttpStatus
@@ -14,6 +12,8 @@ import org.springframework.web.bind.annotation.ControllerAdvice
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.ResponseBody
 import org.springframework.web.bind.annotation.ResponseStatus
+import java.io.IOException
+import javax.servlet.http.HttpServletRequest
 
 @ControllerAdvice
 @Order(Ordered.LOWEST_PRECEDENCE)
@@ -23,11 +23,11 @@ class ControllerAdvice {
     @ResponseBody
     fun handleUnexpectedException(
         request: HttpServletRequest,
-        e: StoreServerException,
+        e: StoreServerException
     ): StoreServiceError<BadRequestErrorCode> {
         return BadRequestError(
             message = "This is server error.",
-            code = BadRequestErrorCode.UNEXPECTED_ERROR,
+            code = BadRequestErrorCode.UNEXPECTED_ERROR
         )
     }
 
@@ -36,11 +36,11 @@ class ControllerAdvice {
     @ResponseBody
     fun handleClientException(
         request: HttpServletRequest,
-        e: StoreClientException,
+        e: StoreClientException
     ): StoreServiceError<BadRequestErrorCode> {
         return BadRequestError(
             message = "This is client error",
-            code = BadRequestErrorCode.UNEXPECTED_ERROR,
+            code = BadRequestErrorCode.UNEXPECTED_ERROR
         )
     }
 
@@ -49,11 +49,11 @@ class ControllerAdvice {
     @ResponseBody
     fun handleIOException(
         request: HttpServletRequest,
-        e: IOException,
+        e: IOException
     ): StoreServiceError<BadRequestErrorCode> {
         return BadRequestError(
             message = "This is client error",
-            code = BadRequestErrorCode.UNEXPECTED_ERROR,
+            code = BadRequestErrorCode.UNEXPECTED_ERROR
         )
     }
 }

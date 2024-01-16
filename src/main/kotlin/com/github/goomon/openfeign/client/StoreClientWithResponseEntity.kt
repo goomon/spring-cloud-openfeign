@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping
 @FeignClient(
     name = "stores-with-reponse-entity",
     url = "http://localhost:9090",
-    configuration = [FeignConfiguration::class],
+    configuration = [FeignConfiguration::class]
 )
 interface StoreClientWithResponseEntity {
     @GetMapping("/stores")

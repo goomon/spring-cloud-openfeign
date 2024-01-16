@@ -2,11 +2,11 @@ package com.github.goomon.openfeign.client.configuration
 
 import feign.Response
 import feign.slf4j.Slf4jLogger
-import java.io.IOException
 import org.slf4j.LoggerFactory
+import java.io.IOException
 
 class FeignElapsedTimeoutExceededLogger(
-    private val minElapsedTimeMillis: Long,
+    private val minElapsedTimeMillis: Long
 ) : Slf4jLogger() {
 
     private val LOGGER = LoggerFactory.getLogger(javaClass)
@@ -15,7 +15,7 @@ class FeignElapsedTimeoutExceededLogger(
         configKey: String,
         logLevel: Level,
         response: Response,
-        elapsedTime: Long,
+        elapsedTime: Long
     ): Response {
         if (minElapsedTimeMillis < elapsedTime) {
             LOGGER.info("[FeignElapsedTimeoutExceededLogger] method: ${methodTag((configKey).trim())}, status: ${response.status()}, elapsedTime: $elapsedTime")
@@ -27,7 +27,7 @@ class FeignElapsedTimeoutExceededLogger(
         configKey: String,
         logLevel: Level,
         ioe: IOException,
-        elapsedTime: Long,
+        elapsedTime: Long
     ): IOException {
         if (minElapsedTimeMillis < elapsedTime) {
             LOGGER.info("[FeignElapsedTimeoutExceededLogger] method: ${methodTag((configKey).trim())}, ioe: ${ioe.message}, elapsedTime: $elapsedTime")

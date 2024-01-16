@@ -4,4 +4,4 @@ sealed class StoreServiceException : RuntimeException()
 
 class StoreServerException : StoreServiceException()
 
-class StoreClientException: StoreServiceException()
+class StoreClientException : StoreServiceException()

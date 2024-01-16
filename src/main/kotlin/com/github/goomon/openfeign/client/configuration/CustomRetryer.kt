@@ -2,9 +2,8 @@ package com.github.goomon.openfeign.client.configuration
 
 import feign.RetryableException
 import feign.Retryer
-import org.springframework.stereotype.Component
 
-//@Component
+// @Component
 class CustomRetryer : Retryer {
     override fun clone(): Retryer {
         return CustomRetryer()

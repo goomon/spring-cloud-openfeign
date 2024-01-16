@@ -11,5 +11,5 @@ enum class StoreServiceErrorLevel {
     INFO,
     WARN,
     ERROR,
-    FATAL,
+    FATAL
 }

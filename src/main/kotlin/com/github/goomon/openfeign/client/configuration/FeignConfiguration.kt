@@ -2,17 +2,14 @@ package com.github.goomon.openfeign.client.configuration
 
 import feign.Logger
 import feign.Request
-import feign.Response
 import feign.codec.Encoder
 import feign.form.spring.SpringFormEncoder
 import feign.slf4j.Slf4jLogger
-import java.io.IOException
-import java.util.concurrent.TimeUnit
-import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.ObjectFactory
 import org.springframework.boot.autoconfigure.http.HttpMessageConverters
 import org.springframework.cloud.openfeign.support.SpringEncoder
 import org.springframework.context.annotation.Bean
+import java.util.concurrent.TimeUnit
 
 class FeignConfiguration {
     @Bean
@@ -35,9 +32,11 @@ class FeignConfiguration {
         val connectionTimeout = 5L
         val readTimeout = 10L
         return Request.Options(
-            connectionTimeout, TimeUnit.SECONDS,
-            readTimeout, TimeUnit.SECONDS,
-            true,
+            connectionTimeout,
+            TimeUnit.SECONDS,
+            readTimeout,
+            TimeUnit.SECONDS,
+            true
         )
     }
 }

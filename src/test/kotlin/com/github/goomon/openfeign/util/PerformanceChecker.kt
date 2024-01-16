@@ -1,6 +1,6 @@
 package com.github.goomon.openfeign.util
 
-fun measure(cnt: Int = 1, block: () -> Unit): Long  {
+fun measure(cnt: Int = 1, block: () -> Unit): Long {
     val start = System.nanoTime()
 
     repeat(cnt) { block.invoke() }
@@ -9,7 +9,7 @@ fun measure(cnt: Int = 1, block: () -> Unit): Long  {
     return end - start
 }
 
-fun measureMs(cnt: Int = 1, block: () -> Unit): Long  {
+fun measureMs(cnt: Int = 1, block: () -> Unit): Long {
     val start = System.nanoTime()
 
     repeat(cnt) { block.invoke() }

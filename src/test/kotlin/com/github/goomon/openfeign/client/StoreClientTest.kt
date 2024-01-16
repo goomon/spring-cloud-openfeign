@@ -29,7 +29,7 @@ class StoreClientTest {
         // given
         val store = Store(
             name = "table",
-            stock = 100,
+            stock = 100
         )
 
         // when
@@ -46,7 +46,7 @@ class StoreClientTest {
         // given
         val store = Store(
             name = "table",
-            stock = 100,
+            stock = 100
         )
 
         // when
