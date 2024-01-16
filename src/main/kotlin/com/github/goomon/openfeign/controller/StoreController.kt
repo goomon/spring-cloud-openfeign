@@ -35,6 +35,7 @@ class StoreController {
 
     @GetMapping("/stores")
     fun getStores(): List<Store> {
+        LOGGER.info("getStores()")
         return sampleData
     }
 
